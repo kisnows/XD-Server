@@ -9,11 +9,11 @@ const syncData = require('./data/sync.js')
 const app = express()
 
 const freemarker = new Freemarker({
-    viewRoot: path.join(__dirname, 'views')
+    viewRoot: path.join(__dirname, config.viewRoot)
 })
 
 // 静态资源
-app.use('static', express.static(path.join(__dirname, 'static')))
+app.use(express.static(path.join(__dirname, 'src')))
 
 // 解析 ftl
 app.use(function (req, res, next) {
