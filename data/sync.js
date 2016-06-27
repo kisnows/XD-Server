@@ -1,12 +1,14 @@
 module.exports = {
-    'page_index': {
+    'page_home': {
         'user': {
             'name': 'Yuanqi'
         }
     },
-    'page_home': {
-        'product': {
-            'name': 'haha'
+    'page_list': {
+        'user': {
+            'name': 'Yuanqi',
+            'age':'23',
+            'avatar':'../image/invalid_loan_img.png'
         }
     }
 }
