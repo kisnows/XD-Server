@@ -6,6 +6,14 @@
 * glup 3.9.1+
 
 ## 配置
+### express 配置
+用以配置 `express` 的端口和要解析 `ftl` 文件的路径，配置文件位于 `config.js` 下：
+```javascript
+module.exports = {
+  'viewRoot': 'src/views',
+  'port': 3000
+}
+```
 ### ftl 渲染
 ftl 文件需要的数据在 `./data/sync.js` 下面定义，格式如下：
 ```javascript
@@ -43,6 +51,7 @@ module.exports = {
 ```bash
 npm install && gulp
 ```
-浏览器会自动打开到 `localhost:5000` 这个地址，然后就可以开发了。
+浏览器会自动打开到 `localhost:5000` 这个地址，默认以 `src` 为基础目录，在这个例子下面打开 `localhost:5000\home.ftl`，就可以开发了。
+
 所有的流程都是自动化的，包括 scss 编译以及页面或者 js 的变动，都会实施反映到浏览器中。
 

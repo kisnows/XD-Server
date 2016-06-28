@@ -1,24 +1,24 @@
 var forceRequire = require('require-reload');
 
-module.exports = function( router ){
-	var data = forceRequire('./async');
-	//每隔1秒重新解析data，刷新data，新增的路由不会生效
-	setInterval(function(){
-		data = forceRequire('./async');
-	}, 1000);
+module.exports = function (router) {
+  var data = forceRequire('./async');
+  //每隔1秒重新解析data，刷新data，新增的路由不会生效
+  setInterval(function () {
+    data = forceRequire('./async');
+  }, 1000);
 
-	for( var i in data ){
-		(function( v ){
-			router.get( v, function( req, res ) {
-				res.json(
-					data[ v ]
-				);
-			} );
-			router.post( v, function( req, res ){
-				res.json(
-					data[ v ]
-				);
-			} );
-		})( i );
-	}
+  for (var i in data) {
+    (function (v) {
+      router.get(v, function (req, res) {
+        res.json(
+          data[v]
+        );
+      });
+      router.post(v, function (req, res) {
+        res.json(
+          data[v]
+        );
+      });
+    })(i);
+  }
 };

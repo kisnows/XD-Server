@@ -9,6 +9,7 @@ var cssnano = require('gulp-cssnano')
 var uglify = require('gulp-uglify')
 var rename = require('gulp-rename')
 var pkg = require('./package')
+var config = require('./config')
 
 var filepath = {
   'css': ',/src/css/**/*.css',
@@ -35,7 +36,7 @@ gulp.task('develop', function () {
     }
   });
   bs.init(null, {
-    proxy: 'http://localhost:3000',
+    proxy: 'http://localhost:' + config.port,
     files: [filepath.js, filepath.views],
     notify: false,
     port: 5000
