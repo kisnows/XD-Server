@@ -4,14 +4,16 @@
   "description": "ftl-server ",
   "main": "server.js",
   "scripts": {
-    "start": "npm run gulp"
+    "dev": "gulp dev",
+    "api":"gulp api"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/kisnows/XD-Server.git"
   },
   "keywords": [
-    "ftl","scss"
+    "ftl",
+    "scss"
   ],
   "author": "yq12315@gmail.com",
   "license": "MIT",
@@ -21,6 +23,7 @@
   "homepage": "https://github.com/kisnows/XD-Server",
   "devDependencies": {
     "browser-sync": "^2.13.0",
+    "chalk": "^1.1.3",
     "express": "^4.14.0",
     "freemarker.js": "^1.2.2",
     "gulp": "^3.9.1",

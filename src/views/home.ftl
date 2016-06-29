@@ -6,8 +6,8 @@
 	<link rel="stylesheet" href="./css/app.css">
 </head>
 <body class="page_home">
-	<h1>你的微笑</h1>
-    <#include './inclue/include.ftl'>
+	<h1>你的微笑啊</h1>
+    <#include './include/include.ftl'>
     <ul>
 	    <li>姓名: ${user.name}</li>
         <li><input type='text' /></li>

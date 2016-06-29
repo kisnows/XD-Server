@@ -1,8 +1,10 @@
 window.onload = function () {
-  testAjax();
+  getData('/preloan')
+  getData('/loan/index')
+  getData('/loan/po')
 }
 
-function testAjax() {
+function getData(url) {
   var xhr = new XMLHttpRequest
   xhr.responseType = 'json'
   xhr.onreadystatechange = function () {
@@ -15,7 +17,7 @@ function testAjax() {
       console.error(this.status)
     }
   }
-  xhr.open('GET', 'loan/index')
+  xhr.open('GET', url)
   xhr.send()
 }
 

@@ -33,7 +33,7 @@ gulp.task('css', function () {
 
 // dev server
 // 启动 express 并添加 browserSync 支持
-gulp.task('develop', function () {
+gulp.task('dev:server', function () {
   nodemon({
     script: 'server.js',
     ignore: ['src', '.vscode', 'idea', 'node_modules'],
@@ -45,16 +45,15 @@ gulp.task('develop', function () {
     proxy: 'http://localhost:' + config.port,
     files: [filepath.js, filepath.views],
     notify: false,
+    open: false,
     port: 5000
   })
 })
 
-gulp.task('watch', function () {
-  gulp.watch(filepath.scss, ['css'])
-})
+
 
 // 联调服务
-gulp.task('api', function () {
+gulp.task('api:server', function () {
   nodemon({
     script: 'server.js',
     ignore: ['src', '.vscode', 'idea', 'node_modules'],
@@ -67,6 +66,7 @@ gulp.task('api', function () {
     proxy: 'http://localhost:' + config.port,
     files: [filepath.js, filepath.views],
     notify: false,
+    open: false,
     port: 5000
   })
 })
@@ -91,4 +91,11 @@ gulp.task('jsmin', function () {
 
 gulp.task('build', ['cssmin', 'jsmin'])
 
-gulp.task('default', ['develop', 'css', 'watch'])
+// watching
+gulp.task('watch', function () {
+  gulp.watch(filepath.scss, ['css'])
+})
+
+gulp.task('dev', ['dev:server', 'css', 'watch'])
+gulp.task('api', ['api:server', 'css', 'watch'])
+

@@ -1,13 +1,15 @@
-const express = require('express')
 const path = require('path')
 const url = require('url')
+const chalk = require('chalk')
 const request = require('request')
 const Freemarker = require('freemarker.js')
+const express = require('express')
+
 const config = require('./config')
 const syncData = require('./data/sync.js')
-const chalk = require('chalk')
 const app = express()
 const router = express.Router()
+
 const freemarker = new Freemarker({
   viewRoot: path.join(__dirname, config.viewRoot)
 })
@@ -20,7 +22,7 @@ app.use(function (req, res, next) {
     var data = syncData['page_' + fileName] || {}
     freemarker.render(filePath, data, function (err, html, output) {
       if (err) {
-        // 没有卵用的 err ,即使编译错误也不会报错
+        // 没有卵用的 err, 即使编译错误也不会报错
         throw new Error('NOT', err)
       }
       // DONE 采用正则分析 output 的方法来判断是否出错,如果出错则直接输出到浏览器上
@@ -39,8 +41,8 @@ app.use(function (req, res, next) {
 
 // 静态资源
 app.use(express.static(path.join(__dirname, 'src')))
-app.use('/', router);
 
+app.use('/', router);
 
 app.use(function (err, req, res, next) {
   err.status = err.status || 500
@@ -49,10 +51,12 @@ app.use(function (err, req, res, next) {
 })
 
 if (process.env.NODE_ENV === 'development') {
-  console.log('dev')
+  console.log(chalk.yellow('dev server'))
   require('./data')(router)
 } else if (process.env.NODE_ENV === 'api') {
   router.use('/', function (req, res, next) {
+    console.log(chalk.yellow(req.method+' '+req.url))
+    console.log('http://' + process.env.REMOTE_API + req.url)
     if (req.method.toUpperCase() === 'GET') {
       request({
         qs: req.body,
@@ -74,5 +78,5 @@ if (process.env.NODE_ENV === 'development') {
 const port = config.port || 3000
 
 app.listen(port, function () {
-  console.log('App is running on port %s', port)
+  console.log(chalk.yellow('App is running on port %s'), port)
 })
