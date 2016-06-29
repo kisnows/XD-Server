@@ -5,7 +5,7 @@
 	<title>test ftl</title>
 	<link rel="stylesheet" href="./css/app.css">
 </head>
-<body class="home">
+<body class="page_home">
 	<h1>你的微笑</h1>
     <#include './include/include.ftl'>
     <ul>
