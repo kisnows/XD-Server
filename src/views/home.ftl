@@ -7,7 +7,7 @@
 </head>
 <body class="page_home">
 	<h1>你的微笑</h1>
-    <#include './include/include.ftl'>
+    <#include './inclue/include.ftl'>
     <ul>
 	    <li>姓名: ${user.name}</li>
         <li><input type='text' /></li>
