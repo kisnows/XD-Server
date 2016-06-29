@@ -1,7 +1,8 @@
+const data = require('./async/')
+
 module.exports = {
-  '/loan/index': {
-    'name': 'XiaoDia',
-  },
+  '/loan/index': data.home,
+  '/preloan': data.preloan,
   '/loan/po': {
     'pro': 'haha'
   }

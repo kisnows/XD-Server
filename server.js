@@ -13,7 +13,6 @@ const freemarker = new Freemarker({
   viewRoot: path.join(__dirname, config.viewRoot)
 })
 
-
 // 解析 ftl
 app.use(function (req, res, next) {
   var filePath = req.path

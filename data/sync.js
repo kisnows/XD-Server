@@ -1,3 +1,4 @@
+const data = require('./sync/')
 module.exports = {
   'page_home': {
     'user': {
